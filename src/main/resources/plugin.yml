@@ -1,0 +1,11 @@
+name: Players
+version: @version@
+main: com.github.eighty88.players.Players
+api-version: 1.15
+authors: [ eight_y_88 ]
+description: Players
+website: https://github.com/Palpunte-Union
+
+commands:
+  players:
+    usage: /<command>

@@ -1,29 +1,33 @@
 package com.github.eighty88.players;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
 
-public class GUI {
-    private static Inventory inventory;
+import java.util.Objects;
 
+public class GUI {
     public static void displayGUI(Player player) {
-        initializeGUI();
+        Inventory inventory = initializeGUI();
         player.openInventory(inventory);
     }
 
-    public static void initializeGUI() {
-        inventory = Bukkit.createInventory(null, 56, "Players");
+    public static Inventory initializeGUI() {
+        Inventory inventory = Bukkit.createInventory(null, 56, "Players");
 
         for(Player player: Bukkit.getOnlinePlayers()) {
             ItemStack stack = new ItemStack(Material.PLAYER_HEAD);
             SkullMeta skullMeta = (SkullMeta) stack.getItemMeta();
-            skullMeta.setOwningPlayer(player);
+            assert skullMeta != null;
+            Objects.requireNonNull(skullMeta).setOwningPlayer(player);
+            skullMeta.setDisplayName(ChatColor.RESET.toString() + ChatColor.AQUA + player.getName());
             stack.setItemMeta(skullMeta);
             inventory.addItem(stack);
         }
+        return inventory;
     }
 }

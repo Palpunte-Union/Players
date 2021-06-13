@@ -28,7 +28,8 @@ public final class Players extends JavaPlugin {
         if(command.getName().equalsIgnoreCase("players")) {
             if(sender instanceof Player)
                 GUI.displayGUI((Player) sender);
+            return true;
         }
-        return super.onCommand(sender, command, label, args);
+        return false;
     }
 }

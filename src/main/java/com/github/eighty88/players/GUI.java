@@ -17,7 +17,7 @@ public class GUI {
     }
 
     public static Inventory initializeGUI() {
-        Inventory inventory = Bukkit.createInventory(null, 56, "Players");
+        Inventory inventory = Bukkit.createInventory(null, 54, "Players");
 
         for(Player player: Bukkit.getOnlinePlayers()) {
             ItemStack stack = new ItemStack(Material.PLAYER_HEAD);
